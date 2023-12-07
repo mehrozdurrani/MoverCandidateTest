@@ -7,7 +7,7 @@ namespace MoverCandidateTest.Services.WatchHands
         public CalculateLeastAngleResponse CalculateLeastAngle(DateTime dateTime)
         {
             // Get the hour and minute from the request
-            var hour = dateTime.Hour;
+            var hour = dateTime.Hour % 12;
             var minute = dateTime.Minute;
 
             // Calculate the smallest angle between the hour and minute hand
