@@ -3,7 +3,7 @@
 ## Request
 
 ```js
-POST/InventoryItems
+POST Inventory/AddInventoryItem
 ```
 
 ```json
@@ -29,7 +29,7 @@ POST/InventoryItems
 
 ## Request
 ```js
-DELETE/InventoryItems/{{sku}}
+PUT Inventory/RemoveInventoryItem/{{sku}}
 ```
 
 ## Response
@@ -47,7 +47,7 @@ DELETE/InventoryItems/{{sku}}
 
 ## Request
 ```js
-GET/InventoryItems
+GET Inventory/GetInventoryList
 ```
 
 ## Response

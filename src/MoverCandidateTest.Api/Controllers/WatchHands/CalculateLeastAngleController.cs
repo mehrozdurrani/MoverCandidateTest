@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MoverCandidateTest.Api.Controllers;
 using MoverCandidateTest.Contracts.WatchHands;
 using MoverCandidateTest.Services.WatchHands;
 
@@ -7,7 +8,7 @@ namespace MoverCandidateTest.Controllers.WatchHands
 {
     [ApiController]
     [Route("[controller]")]
-    public class CalculateLeastAngleController : ControllerBase
+    public class CalculateLeastAngleController : ApiController
     {
         private readonly ILogger<CalculateLeastAngleController> _logger;
         private readonly ICalculateLeastAngleService _calculateLeastAngleService;
