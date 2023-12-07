@@ -4,7 +4,7 @@ namespace MoverCandidateTest.Services.WatchHands
 {
     public class CalculateLeastAngleService : ICalculateLeastAngleService
     {
-        public CalculateLeastAngleResponse CalculateLeastAngle(DateTime dateTime)
+        public double CalculateLeastAngle(DateTime dateTime)
         {
             // Get the hour and minute from the request
             var hour = dateTime.Hour % 12;
@@ -16,11 +16,8 @@ namespace MoverCandidateTest.Services.WatchHands
             var angleDifference = Math.Abs(hourAngle - minuteAngle);
             var smallestAngle = Math.Min(angleDifference, 360 - angleDifference);
 
-            // Create and return the response
-            return new CalculateLeastAngleResponse(
-                $"{dateTime.Hour}:{dateTime.Minute}",
-                smallestAngle
-            );
+            // Return the response
+            return smallestAngle;
         }
     }
 }

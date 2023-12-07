@@ -5,6 +5,6 @@ namespace MoverCandidateTest.Services.WatchHands
 {
     public interface ICalculateLeastAngleService
     {
-        public CalculateLeastAngleResponse CalculateLeastAngle(DateTime dateTime);
+        public double CalculateLeastAngle(DateTime dateTime);
     }
 }
