@@ -16,9 +16,9 @@ namespace MoverCandidateTest.Controllers.WatchHands
         }
 
         [HttpGet]
-        public string Get([FromQuery] CalculateLeastAngleRequest requestModel)
+        public string Get([FromQuery] CalculateLeastAngleRequest request)
         {
-            return $"Hi candidate, return your result here :) (Input reads: {requestModel.DateTime})";
+            return $"Hi candidate, return your result here :) (Input reads: {request.DateTime})";
         }
     }
 }
