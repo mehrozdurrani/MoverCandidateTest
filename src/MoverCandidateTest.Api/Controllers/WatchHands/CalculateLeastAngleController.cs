@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
+using MoverCandidateTest.Contracts.WatchHands;
 
 namespace MoverCandidateTest.Controllers.WatchHands
 {
@@ -16,7 +16,7 @@ namespace MoverCandidateTest.Controllers.WatchHands
         }
 
         [HttpGet]
-        public string Get([FromQuery] CalculateLeastAngleRequestModel requestModel)
+        public string Get([FromQuery] CalculateLeastAngleRequest requestModel)
         {
             return $"Hi candidate, return your result here :) (Input reads: {requestModel.DateTime})";
         }
