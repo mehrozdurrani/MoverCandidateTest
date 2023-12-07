@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'MoverCandidateTest' " />
+  <ItemGroup>
+    <Folder Include="Controllers\Inventory\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MoverCandidateTest.Contracts\MoverCandidateTest.Contracts.csproj" />
+    <ProjectReference Include="..\MoverCandidateTest.Models\MoverCandidateTest.Models.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\MoverCandidateTest.Services\MoverCandidateTest.Services.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+
+
+</Project>
