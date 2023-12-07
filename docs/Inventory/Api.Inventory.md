@@ -54,7 +54,7 @@ GET Inventory/GetInventoryList
 
 ```json
 {
-  "items": [
+ [
     {
       "sku": "Gant-MV-B-L",
       "description": "A beautiful Gant blue V-neck t-shirt for youngsters",
