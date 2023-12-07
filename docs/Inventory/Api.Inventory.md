@@ -29,7 +29,13 @@ POST Inventory/AddInventoryItem
 
 ## Request
 ```js
-PUT Inventory/RemoveInventoryItem/{{sku}}
+PUT Inventory/RemoveInventoryItem
+```
+```json
+{
+  "sku" : "Gant-MV-B-L",
+  "quantity" : 1
+}
 ```
 
 ## Response

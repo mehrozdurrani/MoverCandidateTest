@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MoverCandidateTest.DataAccess;
 using MoverCandidateTest.Services;
 
 namespace MoverCandidateTest
@@ -21,6 +22,8 @@ namespace MoverCandidateTest
         {
             services.AddControllers();
             services.AddCalculateLeastAngleService();
+            services.AddInventoryService();
+            services.AddDataAccess();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
