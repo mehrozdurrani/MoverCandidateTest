@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MoverCandidateTest.Contracts.WatchHands;
+using MoverCandidateTest.Services.WatchHands;
 
 namespace MoverCandidateTest.Controllers.WatchHands
 {
@@ -9,10 +10,12 @@ namespace MoverCandidateTest.Controllers.WatchHands
     public class CalculateLeastAngleController : ControllerBase
     {
         private readonly ILogger<CalculateLeastAngleController> _logger;
+        private readonly ICalculateLeastAngleService _calculateLeastAngleService;
 
-        public CalculateLeastAngleController(ILogger<CalculateLeastAngleController> logger)
+        public CalculateLeastAngleController(ILogger<CalculateLeastAngleController> logger, ICalculateLeastAngleService calculateLeastAngleService)
         {
             _logger = logger;
+            _calculateLeastAngleService = calculateLeastAngleService;
         }
 
         [HttpGet]
