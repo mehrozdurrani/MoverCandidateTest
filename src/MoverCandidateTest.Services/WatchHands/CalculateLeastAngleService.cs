@@ -1,9 +1,17 @@
-using MoverCandidateTest.Contracts.WatchHands;
+using Microsoft.Extensions.Logging;
+using MoverCandidateTest.Services.Errors;
 
 namespace MoverCandidateTest.Services.WatchHands
 {
     public class CalculateLeastAngleService : ICalculateLeastAngleService
     {
+        private readonly ILogger<CalculateLeastAngleService> _logger;
+
+        public CalculateLeastAngleService(ILogger<CalculateLeastAngleService> logger)
+        {
+            _logger = logger;
+        }
+
         public double CalculateLeastAngle(DateTime dateTime)
         {
             // Get the hour and minute from the request
@@ -15,6 +23,13 @@ namespace MoverCandidateTest.Services.WatchHands
             var minuteAngle = minute * 6;
             var angleDifference = Math.Abs(hourAngle - minuteAngle);
             var smallestAngle = Math.Min(angleDifference, 360 - angleDifference);
+
+            // Log calculation details
+            _logger.LogInformation(
+                "Calculated smallest angle ({DateTime}): {SmallestAngle}",
+                dateTime,
+                smallestAngle
+            );
 
             // Return the response
             return smallestAngle;

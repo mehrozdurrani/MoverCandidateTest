@@ -1,8 +1,4 @@
-
 namespace MoverCandidateTest.Contracts.WatchHands
 {
-    public record CalculateLeastAngleResponse(
-        string Time,
-        double LeastAngle
-    );
+    public record CalculateLeastAngleResponse(string Time, double LeastAngle);
 }

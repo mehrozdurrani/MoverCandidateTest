@@ -17,16 +17,20 @@ namespace MoverCandidateTest.Api.Controllers.Inventory
         [HttpPost("AddInventoryItem")]
         public IActionResult AddInventoryItem(AddInventoryItemRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             InventoryItem inventoryItem = InventoryItem.Create(request.Sku, request.Description, request.Quantity);
             _inventoryService.AddInventoryItem(inventoryItem);
-            return Ok();
+            return Ok("Inventory Item Added Successfully");
         }
 
         [HttpPut("RemoveInventoryItem")]
         public IActionResult RemoveInventoryItem(RemoveInventoryItemRequest request)
         {
             _inventoryService.RemoveInventoryItem(request.Sku, request.Quantity);
-            return Ok();
+            return Ok("Inventory Item Removed Successfully");
         }
         [HttpGet("GetInventoryList")]
         public IActionResult GetInventoryList()

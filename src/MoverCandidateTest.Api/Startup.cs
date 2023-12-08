@@ -34,6 +34,8 @@ namespace MoverCandidateTest
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseExceptionHandler("/error");
+
             app.UseRouting();
 
             app.UseAuthorization();
