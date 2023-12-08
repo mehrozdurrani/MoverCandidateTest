@@ -9,5 +9,6 @@ namespace MoverCandidateTest.DataAccess.Repositories
         public void UpdateInventoryItemInRepository(string sku, int quantity);
         public List<InventoryItem> GetInventoryListFromRepository();
         public bool InventoryItemExistsInRepository(string sku);
+        public InventoryItem GetInventoryItemFromRepository(string sku);
     }
 }

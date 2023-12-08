@@ -11,6 +11,12 @@ namespace MoverCandidateTest.DataAccess.Repositories
             _inventoryList.Add(item.Sku, item);
         }
 
+        public InventoryItem GetInventoryItemFromRepository(string sku)
+        {
+            // Returning deep copy
+            return InventoryItem.Create(_inventoryList[sku].Sku, _inventoryList[sku].Description, _inventoryList[sku].Quantity);
+        }
+
         public List<InventoryItem> GetInventoryListFromRepository()
         {
             // Returning deep copy

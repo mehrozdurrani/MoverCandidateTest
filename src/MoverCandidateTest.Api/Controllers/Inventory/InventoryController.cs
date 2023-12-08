@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using MoverCandidateTest.Contracts.Inventory;
+using MoverCandidateTest.Models.Inventory;
+using MoverCandidateTest.Services.Inventory;
 
 namespace MoverCandidateTest.Api.Controllers.Inventory
 {
@@ -6,21 +9,31 @@ namespace MoverCandidateTest.Api.Controllers.Inventory
     [Route("[controller]")]
     public class InventoryController : ApiController
     {
-        [HttpPost("AddInventoryItem")]
-        public IActionResult AddInventoryItem()
+        private readonly IInventoryService _inventoryService;
+        public InventoryController(IInventoryService inventoryService)
         {
-            return Ok("I am in AddInventoryItem Post method");
+            _inventoryService = inventoryService;
+        }
+        [HttpPost("AddInventoryItem")]
+        public IActionResult AddInventoryItem(AddInventoryItemRequest request)
+        {
+            InventoryItem inventoryItem = InventoryItem.Create(request.Sku, request.Description, request.Quantity);
+            _inventoryService.AddInventoryItem(inventoryItem);
+            return Ok();
         }
 
         [HttpPut("RemoveInventoryItem")]
-        public IActionResult RemoveInventoryItem()
+        public IActionResult RemoveInventoryItem(RemoveInventoryItemRequest request)
         {
-            return Ok("I am in AddInventoryItem Put method");
+            _inventoryService.RemoveInventoryItem(request.Sku, request.Quantity);
+            return Ok();
         }
         [HttpGet("GetInventoryList")]
         public IActionResult GetInventoryList()
         {
-            return Ok("I am in AddInventoryItem Get method");
+            GetInventoryListResponse inventoryList = new GetInventoryListResponse(_inventoryService.GetInventoryList());
+            return Ok(inventoryList);
         }
+
     }
 }

@@ -14,22 +14,31 @@ namespace MoverCandidateTest.Services.Inventory
         }
         public void AddInventoryItem(InventoryItem item)
         {
-            throw new NotImplementedException();
+            if (_inventoryRepository.InventoryItemExistsInRepository(item.Sku))
+            {
+                var inventoryItem = _inventoryRepository.GetInventoryItemFromRepository(item.Sku);
+                var newQuantity = inventoryItem.Quantity + item.Quantity;
+                _inventoryRepository.UpdateInventoryItemInRepository(item.Sku, newQuantity);
+            }
+            else
+            {
+                _inventoryRepository.AddInventoryItemToRepository(item);
+            }
         }
 
         public List<InventoryItem> GetInventoryList()
         {
-            throw new NotImplementedException();
-        }
-
-        public bool InventoryItemExists(string sku)
-        {
-            throw new NotImplementedException();
+            return _inventoryRepository.GetInventoryListFromRepository();
         }
 
         public void RemoveInventoryItem(string sku, int quantity)
         {
-            throw new NotImplementedException();
+            if (_inventoryRepository.InventoryItemExistsInRepository(sku))
+            {
+                var inventoryItem = _inventoryRepository.GetInventoryItemFromRepository(sku);
+                var newQuantity = inventoryItem.Quantity - quantity;
+                _inventoryRepository.UpdateInventoryItemInRepository(sku, newQuantity);
+            }
         }
     }
 }

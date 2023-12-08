@@ -7,7 +7,7 @@ namespace MoverCandidateTest.DataAccess
     {
         public static IServiceCollection AddDataAccess(this IServiceCollection services)
         {
-            services.AddScoped<IInventoryRepository, InventoryRepository>();
+            services.AddSingleton<IInventoryRepository, InventoryRepository>();
             return services;
         }
     }
