@@ -7,7 +7,7 @@ namespace MoverCandidateTest.Contracts.Inventory
         [Required(ErrorMessage = "SKU is required")]
         public required string Sku { get; init; }
 
-        [Range(0, int.MaxValue, ErrorMessage = "Quantity must be a non-negative number")]
+        [Range(1, int.MaxValue, ErrorMessage = "Quantity must be greater than 0")]
         public int Quantity { get; init; }
     }
 }

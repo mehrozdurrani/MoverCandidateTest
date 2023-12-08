@@ -7,8 +7,6 @@ using MoverCandidateTest.Services.Errors;
 
 namespace MoverCandidateTest.Api.Middlewares
 {
-    [ApiController]
-    [Route("api/[controller]")]
     public class ErrorController : ApiController
     {
         [Route("/error")]
@@ -19,8 +17,8 @@ namespace MoverCandidateTest.Api.Middlewares
             {
                 case IExceptionService serviceException:
                     return Problem(
-                        serviceException.StatusCode.ToString(),
-                        serviceException.ErrorMessage
+                        statusCode: (int?)serviceException.StatusCode,
+                        detail: serviceException.ErrorMessage
                     );
                 default:
                     return Problem(
