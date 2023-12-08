@@ -32,5 +32,11 @@ namespace MoverCandidateTest.DataAccess.Repositories
         {
             _inventoryList[sku].ChangeQuantity(quantity);
         }
+
+        public void UpdateInventoryItemInRepository(string sku, string description, int quantity)
+        {
+            _inventoryList[sku].ChangeDescription(description);
+            _inventoryList[sku].ChangeQuantity(quantity);
+        }
     }
 }
