@@ -29,6 +29,10 @@ namespace MoverCandidateTest.Api.Controllers.Inventory
         [HttpPut("RemoveInventoryItem")]
         public IActionResult RemoveInventoryItem(RemoveInventoryItemRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             _inventoryService.RemoveInventoryItem(request.Sku, request.Quantity);
             return Ok("Inventory Item Removed Successfully");
         }
