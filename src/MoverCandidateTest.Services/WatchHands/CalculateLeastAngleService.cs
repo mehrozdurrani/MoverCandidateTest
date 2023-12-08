@@ -1,4 +1,3 @@
-using MoverCandidateTest.Contracts.WatchHands;
 
 namespace MoverCandidateTest.Services.WatchHands
 {
