@@ -22,5 +22,9 @@ namespace MoverCandidateTest.Models.Inventory
         {
             Quantity = quantity;
         }
+        public void ChangeDescription(string description)
+        {
+            Description = description;
+        }
     }
 }
