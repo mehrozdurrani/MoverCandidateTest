@@ -1,6 +1,7 @@
 
 using MoverCandidateTest.DataAccess.Repositories;
 using MoverCandidateTest.Models.Inventory;
+using MoverCandidateTest.Services.Errors;
 
 namespace MoverCandidateTest.Services.Inventory
 {
@@ -33,12 +34,20 @@ namespace MoverCandidateTest.Services.Inventory
 
         public void RemoveInventoryItem(string sku, int quantity)
         {
-            if (_inventoryRepository.InventoryItemExistsInRepository(sku))
+            if (!_inventoryRepository.InventoryItemExistsInRepository(sku))
             {
-                var inventoryItem = _inventoryRepository.GetInventoryItemFromRepository(sku);
-                var newQuantity = inventoryItem.Quantity - quantity;
-                _inventoryRepository.UpdateInventoryItemInRepository(sku, newQuantity);
+                throw new InventoryItemNotFoundException(sku);
             }
+
+            var inventoryItem = _inventoryRepository.GetInventoryItemFromRepository(sku);
+            var newQuantity = inventoryItem.Quantity - quantity;
+
+            if (newQuantity < 0 || newQuantity == inventoryItem.Quantity)
+            {
+                throw new InvalidQuantityException();
+            }
+
+            _inventoryRepository.UpdateInventoryItemInRepository(sku, newQuantity);
         }
     }
 }

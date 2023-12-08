@@ -1,10 +1,17 @@
 
+using MoverCandidateTest.Services.Errors;
+
 namespace MoverCandidateTest.Services.WatchHands
 {
     public class CalculateLeastAngleService : ICalculateLeastAngleService
     {
         public double CalculateLeastAngle(DateTime dateTime)
         {
+            if (dateTime.Hour is > 23 or < 0 || dateTime.Minute is > 60 or < 0)
+            {
+                throw new InvalidTimeException();
+            }
+
             // Get the hour and minute from the request
             var hour = dateTime.Hour % 12;
             var minute = dateTime.Minute;
