@@ -18,6 +18,11 @@ namespace MoverCandidateTest.Services.Inventory
             _logger = logger;
             _inventoryRepository = inventoryRepository;
         }
+        /*
+        IMPORTANT: The model validation of 'item' is done in the controller. 
+        The 'InventoryItem' that is passed will always be valid. So 'AddInventoryItem' 
+        doesnt need validation of the passed object.
+        */
 
         // Adds or updates an inventory item based on SKU.
         public void AddInventoryItem(InventoryItem item)
@@ -51,6 +56,10 @@ namespace MoverCandidateTest.Services.Inventory
             return inventoryList;
         }
 
+        /*
+        IMPORTANT: The model validation of 'sku' and 'quanity' is done in the controller. 
+        The 'sku' cannot be empty and 'quantity' must be greater than 0.
+        */
         public void RemoveInventoryItem(string sku, int quantity)
         {
             if (!_inventoryRepository.InventoryItemExistsInRepository(sku))
