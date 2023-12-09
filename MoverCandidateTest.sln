@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoverCandidateTest.Api.Unit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoverCandidateTest.Services.UnitTests", "tests\UnitTests\MoverCandidateTest.Services.UnitTests\MoverCandidateTest.Services.UnitTests.csproj", "{E80B245D-82A1-41B1-BE5E-6F74593A854F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoverCandidateTest.DataAccess.UnitTests", "tests\UnitTests\MoverCandidateTest.DataAccess.UnitTests\MoverCandidateTest.DataAccess.UnitTests.csproj", "{70D67CA8-5480-4233-B199-127AD6AF6B15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,10 @@ Global
 		{E80B245D-82A1-41B1-BE5E-6F74593A854F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E80B245D-82A1-41B1-BE5E-6F74593A854F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E80B245D-82A1-41B1-BE5E-6F74593A854F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70D67CA8-5480-4233-B199-127AD6AF6B15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D67CA8-5480-4233-B199-127AD6AF6B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D67CA8-5480-4233-B199-127AD6AF6B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D67CA8-5480-4233-B199-127AD6AF6B15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{322F76E6-5F76-4275-AF63-3C466E590269} = {E1870EC7-1782-4F3A-8C87-60E44EF0B746}
@@ -70,5 +76,6 @@ Global
 		{E67D0391-3F9F-4F6B-B432-80B517D97C1B} = {1A106F01-5998-4ACB-A057-29CC6B19A013}
 		{910E0CA7-9556-45A3-8C24-094111024382} = {E67D0391-3F9F-4F6B-B432-80B517D97C1B}
 		{E80B245D-82A1-41B1-BE5E-6F74593A854F} = {E67D0391-3F9F-4F6B-B432-80B517D97C1B}
+		{70D67CA8-5480-4233-B199-127AD6AF6B15} = {E67D0391-3F9F-4F6B-B432-80B517D97C1B}
 	EndGlobalSection
 EndGlobal
