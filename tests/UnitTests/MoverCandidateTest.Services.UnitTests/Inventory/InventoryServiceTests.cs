@@ -5,7 +5,7 @@ using MoverCandidateTest.Models.Inventory;
 using MoverCandidateTest.Services.Errors;
 using MoverCandidateTest.Services.Inventory;
 
-namespace MoverCandidateTest.Services.UnitTests
+namespace MoverCandidateTest.Services.UnitTests.Inventory
 {
     public class InventoryServiceTests
     {

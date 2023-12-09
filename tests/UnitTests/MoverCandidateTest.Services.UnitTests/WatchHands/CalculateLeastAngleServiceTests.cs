@@ -2,7 +2,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using MoverCandidateTest.Services.WatchHands;
 
-namespace MoverCandidateTest.Services.UnitTests
+namespace MoverCandidateTest.Services.UnitTests.WatchHands
 {
     [TestFixture]
     public class CalculateLeastAngleServiceTests
