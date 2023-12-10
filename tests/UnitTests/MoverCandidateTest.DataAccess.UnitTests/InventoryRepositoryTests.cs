@@ -13,7 +13,6 @@ namespace MoverCandidateTest.DataAccess.UnitTests
             _inventoryRepository = new InventoryRepository();
             _inventoryItem = InventoryItem.Create("Gant-MV-B-L", "A beautiful gant blue V - neck t - shirt for youngsters", 2);
         }
-
         [Test]
         public void AddInventoryItemToRepository_WhenCalledWithInventoryItem_AddsInventoryItem()
         {
@@ -55,6 +54,55 @@ namespace MoverCandidateTest.DataAccess.UnitTests
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.TypeOf<List<InventoryItem>>());
             Assert.That(result, Is.Not.Empty);
+        }
+        [Test]
+        public void InventoryItemExistsInRepository_WhenCalledWithEixstingSku_ReturnsTrue()
+        {
+            // Arrange
+            _inventoryRepository.AddInventoryItemToRepository(_inventoryItem);
+
+            // Act
+            var result = _inventoryRepository.InventoryItemExistsInRepository(_inventoryItem.Sku);
+
+            // Assert
+            Assert.That(result, Is.True);
+        }
+        [Test]
+        public void InventoryItemExistsInRepository_WhenCalledWithNonEixstingSku_ReturnsFalse()
+        {
+            // Arrange
+            _inventoryRepository.AddInventoryItemToRepository(_inventoryItem);
+
+            // Act
+            var result = _inventoryRepository.InventoryItemExistsInRepository("Gant-MV-B-XL");
+
+            // Assert
+            Assert.That(result, Is.False);
+        }
+        [Test]
+        public void UpdateInventoryItemInRepository_WhenCalledWithSkuAndQuantity_UpdatesInventoryItem()
+        {
+            // Arrange
+            _inventoryRepository.AddInventoryItemToRepository(_inventoryItem);
+
+            // Act
+            _inventoryRepository.UpdateInventoryItemInRepository(_inventoryItem.Sku, 3);
+
+            // Assert
+            Assert.That(_inventoryRepository.GetInventoryItemFromRepository(_inventoryItem.Sku).Quantity, Is.EqualTo(3));
+        }
+        [Test]
+        public void UpdateInventoryItemInRepository_WhenCalledWithSkuAndDescription_UpdatesInventoryItem()
+        {
+            // Arrange
+            _inventoryRepository.AddInventoryItemToRepository(_inventoryItem);
+
+            // Act
+            _inventoryRepository.UpdateInventoryItemInRepository(_inventoryItem.Sku, "A beautiful gant blue V - neck t - shirt for teenagers", 3);
+
+            // Assert
+            Assert.That(_inventoryRepository.GetInventoryItemFromRepository(_inventoryItem.Sku).Description, Is.EqualTo("A beautiful gant blue V - neck t - shirt for teenagers"));
+            Assert.That(_inventoryRepository.GetInventoryItemFromRepository(_inventoryItem.Sku).Quantity, Is.EqualTo(3));
         }
     }
 }
