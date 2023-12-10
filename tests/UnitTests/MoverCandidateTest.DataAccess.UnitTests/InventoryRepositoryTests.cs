@@ -7,12 +7,14 @@ namespace MoverCandidateTest.DataAccess.UnitTests
     {
         private IInventoryRepository _inventoryRepository;
         private InventoryItem _inventoryItem;
+
         [SetUp]
         public void Setup()
         {
             _inventoryRepository = new InventoryRepository();
             _inventoryItem = InventoryItem.Create("Gant-MV-B-L", "A beautiful gant blue V - neck t - shirt for youngsters", 2);
         }
+
         [Test]
         public void AddInventoryItemToRepository_WhenCalledWithInventoryItem_AddsInventoryItem()
         {
@@ -25,6 +27,7 @@ namespace MoverCandidateTest.DataAccess.UnitTests
             Assert.That(_inventoryRepository.GetInventoryItemFromRepository(_inventoryItem.Sku).Description, Is.EqualTo(_inventoryItem.Description));
             Assert.That(_inventoryRepository.GetInventoryItemFromRepository(_inventoryItem.Sku).Quantity, Is.EqualTo(_inventoryItem.Quantity));
         }
+
         [Test]
         public void GetInventoryItemFromRepository_WhenCalledWithSku_ReturnsInventoryItem()
         {
@@ -41,6 +44,7 @@ namespace MoverCandidateTest.DataAccess.UnitTests
             Assert.That(result.Description, Is.EqualTo(_inventoryItem.Description));
             Assert.That(result.Quantity, Is.EqualTo(_inventoryItem.Quantity));
         }
+
         [Test]
         public void GetInventoryListFromRepository_WhenCalled_ReturnsInventoryList()
         {
@@ -55,6 +59,7 @@ namespace MoverCandidateTest.DataAccess.UnitTests
             Assert.That(result, Is.TypeOf<List<InventoryItem>>());
             Assert.That(result, Is.Not.Empty);
         }
+
         [Test]
         public void InventoryItemExistsInRepository_WhenCalledWithEixstingSku_ReturnsTrue()
         {
@@ -67,6 +72,7 @@ namespace MoverCandidateTest.DataAccess.UnitTests
             // Assert
             Assert.That(result, Is.True);
         }
+
         [Test]
         public void InventoryItemExistsInRepository_WhenCalledWithNonEixstingSku_ReturnsFalse()
         {
@@ -79,6 +85,7 @@ namespace MoverCandidateTest.DataAccess.UnitTests
             // Assert
             Assert.That(result, Is.False);
         }
+
         [Test]
         public void UpdateInventoryItemInRepository_WhenCalledWithSkuAndQuantity_UpdatesInventoryItem()
         {
@@ -91,6 +98,7 @@ namespace MoverCandidateTest.DataAccess.UnitTests
             // Assert
             Assert.That(_inventoryRepository.GetInventoryItemFromRepository(_inventoryItem.Sku).Quantity, Is.EqualTo(3));
         }
+
         [Test]
         public void UpdateInventoryItemInRepository_WhenCalledWithSkuAndDescription_UpdatesInventoryItem()
         {

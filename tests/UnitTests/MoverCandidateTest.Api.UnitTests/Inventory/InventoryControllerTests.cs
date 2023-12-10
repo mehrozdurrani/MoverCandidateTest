@@ -71,6 +71,7 @@ namespace MoverCandidateTest.Api.UnitTests.Inventory
             Assert.That(result, Is.TypeOf<OkObjectResult>());
             _inventoryServiceMock.Verify(x => x.RemoveInventoryItem(It.IsAny<string>(), It.IsAny<int>()), Times.Once);
         }
+
         [Test]
         [TestCaseSource(typeof(InvalidRemoveInventoryItemTestData), nameof(InvalidRemoveInventoryItemTestData.TestCases))]
         public void RemoveInventoryItem_InvalidRequest_ReturnsBadRequest(RemoveInventoryItemRequest request)
@@ -87,6 +88,7 @@ namespace MoverCandidateTest.Api.UnitTests.Inventory
             Assert.That(result, Is.TypeOf<BadRequestObjectResult>());
             _inventoryServiceMock.Verify(x => x.RemoveInventoryItem(It.IsAny<string>(), It.IsAny<int>()), Times.Never);
         }
+
         [Test]
         public void GetInventoryList_WhenCalled_ReturnsList()
         {

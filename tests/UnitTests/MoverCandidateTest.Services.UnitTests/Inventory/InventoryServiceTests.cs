@@ -13,6 +13,7 @@ namespace MoverCandidateTest.Services.UnitTests.Inventory
         private Mock<IInventoryRepository> _inventoryRepositoryMock;
         private IInventoryService _inventoryService;
         private InventoryItem _inventoryItem;
+
         [SetUp]
         public void Setup()
         {
@@ -36,6 +37,7 @@ namespace MoverCandidateTest.Services.UnitTests.Inventory
             _inventoryRepositoryMock.Verify(x => x.UpdateInventoryItemInRepository(It.IsAny<string>(), It.IsAny<int>()), Times.Never);
 
         }
+
         [Test]
         public void AddInventoryItem_ItemDoesExist_UpdatesInventoryItem()
         {
@@ -68,6 +70,7 @@ namespace MoverCandidateTest.Services.UnitTests.Inventory
             Assert.That(result, Is.Not.Empty);
             Assert.That(result, Is.EquivalentTo(inventoryList));
         }
+
         [Test]
         public void GetInventoryList_InventoryListIsEmpty_ThrowsException()
         {
@@ -107,6 +110,7 @@ namespace MoverCandidateTest.Services.UnitTests.Inventory
             _inventoryRepositoryMock.Verify(x => x.GetInventoryItemFromRepository(It.IsAny<string>()), Times.Never);
             _inventoryRepositoryMock.Verify(x => x.UpdateInventoryItemInRepository(It.IsAny<string>(), It.IsAny<int>()), Times.Never);
         }
+
         [Test]
         public void RemoveInventoryItem_QuntityMoreThanInventoryStock_ThrowsException()
         {

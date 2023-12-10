@@ -1,4 +1,3 @@
-
 using MoverCandidateTest.Models.Inventory;
 
 namespace MoverCandidateTest.Services.Inventory

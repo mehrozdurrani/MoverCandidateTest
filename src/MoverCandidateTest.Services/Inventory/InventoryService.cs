@@ -42,7 +42,6 @@ namespace MoverCandidateTest.Services.Inventory
                 _logger.LogInformation("Adding stock to inventory item: {item}", item);
             }
         }
-
         public List<InventoryItem> GetInventoryList()
         {
             var inventoryList = _inventoryRepository.GetInventoryListFromRepository();

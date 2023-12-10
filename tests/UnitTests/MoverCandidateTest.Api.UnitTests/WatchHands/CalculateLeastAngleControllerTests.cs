@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -13,6 +12,7 @@ namespace MoverCandidateTest.Api.UnitTests.WatchHands
         private Mock<ILogger<CalculateLeastAngleController>> _logger;
         private Mock<ICalculateLeastAngleService> _calculateLeastAngleService;
         private CalculateLeastAngleController _calculateLeastAngleController;
+
         [SetUp]
         public void Setup()
         {
@@ -44,6 +44,7 @@ namespace MoverCandidateTest.Api.UnitTests.WatchHands
             Assert.That(calculateLeastAngleResponse, Is.TypeOf<CalculateLeastAngleResponse>());
             _calculateLeastAngleService.Verify(x => x.CalculateLeastAngle(It.IsAny<DateTime>()), Times.Once);
         }
+
         /*
         IMPORTANT: The intend was to implement 'Get_InvalidRequest_ReturnsBadRequest' but it was not possible to do so.
         as any invalid time or date cannot reach the 'CalculateLeastAngleController' as exaception will be handled 
