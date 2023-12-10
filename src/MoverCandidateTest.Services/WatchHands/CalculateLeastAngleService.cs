@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Logging;
-using MoverCandidateTest.Services.Errors;
 
 namespace MoverCandidateTest.Services.WatchHands
 {
@@ -11,6 +10,12 @@ namespace MoverCandidateTest.Services.WatchHands
         {
             _logger = logger;
         }
+
+        /*
+        IMPORTANT: The model validation of 'dateTime' is done in the controller. 
+        The DateTime that is passed will always be valid. So 'CalculateLeastAngle' 
+        doesnt need validation of the passed object
+        */
 
         public double CalculateLeastAngle(DateTime dateTime)
         {

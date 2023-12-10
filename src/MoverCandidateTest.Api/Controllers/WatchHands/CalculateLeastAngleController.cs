@@ -22,6 +22,10 @@ namespace MoverCandidateTest.Controllers.WatchHands
         [HttpGet]
         public IActionResult Get([FromQuery] CalculateLeastAngleRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var leastAngle = _calculateLeastAngleService.CalculateLeastAngle(request.DateTime);
             CalculateLeastAngleResponse response = new CalculateLeastAngleResponse(request.DateTime.ToString("h:mm tt"), leastAngle);
             return Ok(response);
