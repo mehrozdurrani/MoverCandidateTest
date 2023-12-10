@@ -24,6 +24,7 @@ namespace MoverCandidateTest.Controllers.WatchHands
         {
             if (!ModelState.IsValid)
             {
+                _logger.LogWarning("ModelState of the request is not valid");
                 return BadRequest(ModelState);
             }
             var leastAngle = _calculateLeastAngleService.CalculateLeastAngle(request.DateTime);
