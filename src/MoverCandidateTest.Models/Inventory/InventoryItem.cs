@@ -17,7 +17,6 @@ namespace MoverCandidateTest.Models.Inventory
         {
             return new InventoryItem(sku, description, quantity);
         }
-
         public void ChangeQuantity(int quantity)
         {
             Quantity = quantity;

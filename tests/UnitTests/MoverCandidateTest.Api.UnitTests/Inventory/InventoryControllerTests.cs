@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using MoverCandidateTest.Api.Controllers.Inventory;
 using MoverCandidateTest.Api.UnitTests.Inventory.TestConstants;
@@ -12,13 +13,15 @@ namespace MoverCandidateTest.Api.UnitTests.Inventory
     public class InventoryControllerTests
     {
         private Mock<IInventoryService> _inventoryServiceMock;
+        private Mock<ILogger<InventoryController>> _logger;
         private InventoryController _inventoryController;
 
         [SetUp]
         public void Setup()
         {
             _inventoryServiceMock = new Mock<IInventoryService>();
-            _inventoryController = new InventoryController(_inventoryServiceMock.Object);
+            _logger = new Mock<ILogger<InventoryController>>();
+            _inventoryController = new InventoryController(_inventoryServiceMock.Object, _logger.Object);
         }
 
         [Test]
@@ -68,6 +71,7 @@ namespace MoverCandidateTest.Api.UnitTests.Inventory
             Assert.That(result, Is.TypeOf<OkObjectResult>());
             _inventoryServiceMock.Verify(x => x.RemoveInventoryItem(It.IsAny<string>(), It.IsAny<int>()), Times.Once);
         }
+
         [Test]
         [TestCaseSource(typeof(InvalidRemoveInventoryItemTestData), nameof(InvalidRemoveInventoryItemTestData.TestCases))]
         public void RemoveInventoryItem_InvalidRequest_ReturnsBadRequest(RemoveInventoryItemRequest request)
@@ -84,6 +88,7 @@ namespace MoverCandidateTest.Api.UnitTests.Inventory
             Assert.That(result, Is.TypeOf<BadRequestObjectResult>());
             _inventoryServiceMock.Verify(x => x.RemoveInventoryItem(It.IsAny<string>(), It.IsAny<int>()), Times.Never);
         }
+
         [Test]
         public void GetInventoryList_WhenCalled_ReturnsList()
         {

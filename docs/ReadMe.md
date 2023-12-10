@@ -28,3 +28,12 @@ Enjoy!
          3. Adding inventory with known SKU, it should add the quantity to existing
       2. Remove a defined quantity for a specific SKU
       3. List of all inventory
+
+## Completed Tasks
+
+I have successfully completed the tasks. Here are the relevant files:
+
+- [WatchHands API Documentation](/docs/WatchHands/Api.WatchHands.md)
+- [Inventory API Documentation](/docs/Inventory/Api.Inventory.md)
+
+To run the project, follow the instructions provided in the documentation.
